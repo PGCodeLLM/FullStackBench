@@ -70,7 +70,7 @@ Refer to our paper and <a href="https://bytedance.github.io/SandboxFusion/">📚
 ## 💻Usage
 Start the [sandbox server](https://bytedance.github.io/SandboxFusion/):
 ```bash
-docker run -d --rm -p 8080:8080 volcengine/sandbox-fusion:server-20241202
+docker run -d --rm -p 8080:8080 volcengine/sandbox-fusion:server-20241204
 ```
 
 Then, run the benchmark:
