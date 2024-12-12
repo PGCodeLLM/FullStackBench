@@ -42,8 +42,8 @@ async def single_inference(prompt: str) -> str:
                                                           "role": "user",
                                                           "content": prompt
                                                       }],
-                                                      temperature=0.7,
-                                                      top_p=0.95)
+                                                      temperature=0,
+                                                      top_p=1)
     return completion.choices[0].message.content
 
 
