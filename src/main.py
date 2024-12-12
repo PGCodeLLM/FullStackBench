@@ -43,7 +43,7 @@ async def single_inference(prompt: str) -> str:
                                                           "content": prompt
                                                       }],
                                                       temperature=0,
-                                                      top_p=1)
+                                                      max_tokens=2048)
     return completion.choices[0].message.content
 
 
