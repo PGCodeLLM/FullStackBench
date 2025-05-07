@@ -63,7 +63,7 @@ Refer to our paper and <a href="https://bytedance.github.io/SandboxFusion/">📚
 
 | **Dataset** |  **Download** |
 | :------------: | :------------: |
-| FullStack Bench Dataset  | [🤗 HuggingFace](https://github.com/bytedance/FullStackBench)   |
+| FullStack Bench Dataset  | [🤗 HuggingFace](https://huggingface.co/datasets/ByteDance/FullStackBench)   |
 
 </div>
 
