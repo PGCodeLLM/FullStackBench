@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def evaluate_sample(sample: dict) -> list[dict]:
+async def evaluate_sample(sample: dict, natural_language: str) -> list[dict]:
     completions: str | list[str] = sample.get('completion', [])
     if isinstance(completions, str):
         completions = [completions]
@@ -52,6 +52,7 @@ async def evaluate_sample(sample: dict) -> list[dict]:
             pass_at_k = True
         else:
             all_k_correct = False
+        result['natural_language'] = natural_language
         if 'labels' in sample and 'programming_language' in sample['labels']:
             result['programming_language'] = sample['labels']['programming_language']
             result['category'] = sample['labels'].get('category', '')
@@ -85,6 +86,13 @@ async def main():
         default='http://localhost:8080',
         help='SandboxFusion server endpoint'
     )
+    parser.add_argument(
+        '--language',
+        type=str,
+        required=True,
+        choices=['en', 'zh'],
+        help='Natural language of the dataset (en or zh)'
+    )
 
     args = parser.parse_args()
 
@@ -101,7 +109,7 @@ async def main():
     logger.info(f"Found {len(samples)} samples to evaluate")
 
     logger.info("Starting evaluation...")
-    tasks = [evaluate_sample(sample) for sample in samples]
+    tasks = [evaluate_sample(sample, args.language) for sample in samples]
     results = []
 
     for result in await tqdm_asyncio.gather(*tasks, desc="Evaluating"):
