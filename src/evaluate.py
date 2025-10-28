@@ -123,7 +123,7 @@ async def main():
     logger.info(f"Pass rate: {pass_rate:.4%} ({pass_count}/{len(results)})")
 
     logger.info(f"Writing results to: {args.output_file}")
-    write_jsonl(args.output_file, [r for r in results])
+    write_jsonl(args.output_file, results)
 
     return 0
 
